@@ -2,5 +2,6 @@
 
 void Champion::Update()
 {
-	HP -= 2;
+	GameObject::Update();
+	HP -= 2.0f;
 }

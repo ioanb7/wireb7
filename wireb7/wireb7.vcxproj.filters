@@ -27,13 +27,10 @@
     <ClCompile Include="FlyingChampion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SupportChampion.cpp">
+    <ClCompile Include="DataTableManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ManufacturerChampion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AdminChampion.cpp">
+    <ClCompile Include="Packeter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,16 +44,19 @@
     <ClInclude Include="FlyingChampion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SupportChampion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ManufacturerChampion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AdminChampion.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Wire.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WireVar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTableManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WiringClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Packeter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
