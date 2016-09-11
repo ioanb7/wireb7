@@ -3,5 +3,7 @@
 void FlyingChampion::Update()
 {
 	Champion::Update();
-	IsFlying = !IsFlying;
+	IsDropping = !IsDropping;
+	N0CHANGED(IsDropping);
+
 }

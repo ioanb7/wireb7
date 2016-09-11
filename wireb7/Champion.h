@@ -1,23 +1,30 @@
 #pragma once
 
+
 #include "GameObject.h"
-#include "Wire.h"
+#include "NetworkUtils.h"
 
 class Champion : public GameObject
 {
 public:
-	DECLARE_CLASS(Champion)
 	int EntityGlobalUniqueId = 2;
 public:
-	Champion() {
-	}
-	virtual void Initialise() {
-		dataTableManager = new DataTableManager(gameObjectCounter + 1, EntityGlobalUniqueId);
-		entityId = gameObjectCounter++;
+	Champion() : GameObject(){
 		HP = 0.0f;
 	}
-	virtual void Update();
+	virtual void Initialise() {
+		if (dataTableManager == NULL)
+			dataTableManager = new DataTableManager(gameObjectCounter + 1, EntityGlobalUniqueId);
+		entityId = gameObjectCounter++;
+		GameObject::Initialise();
+		dataTableManager->Add(10, Type::_float, &HP);
+		NCHANGE(HP, HP - 0.0f);
+	}
+	virtual void Update()
+	{
+		NCHANGE(HP, HP - 1.0f);
+	}
 
 public:
-	WIREDVAR(float, HP);
+	float HP;
 };

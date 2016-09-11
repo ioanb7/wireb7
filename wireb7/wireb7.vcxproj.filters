@@ -44,19 +44,13 @@
     <ClInclude Include="FlyingChampion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Wire.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WireVar.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DataTableManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WiringClass.h">
+    <ClInclude Include="Packeter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Packeter.h">
+    <ClInclude Include="NetworkUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

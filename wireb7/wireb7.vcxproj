@@ -155,10 +155,8 @@
     <ClInclude Include="DataTableManager.h" />
     <ClInclude Include="FlyingChampion.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="NetworkUtils.h" />
     <ClInclude Include="Packeter.h" />
-    <ClInclude Include="Wire.h" />
-    <ClInclude Include="WireVar.h" />
-    <ClInclude Include="WiringClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

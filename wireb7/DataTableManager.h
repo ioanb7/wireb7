@@ -2,11 +2,16 @@
 
 #include <iostream>
 #include <map>
-#include "WireVar.h"
 #include <string>
 #include <sstream>
 
 using namespace std;
+
+enum Type {
+	_bool = 2 ^ 0,
+	_int = 2 ^ 1,
+	_float = 2 ^ 2
+};
 
 class DataTableManager
 {
@@ -14,51 +19,66 @@ public:
 	DataTableManager(int entityId, int entityGlobalUId) {
 		memoryAddresses = std::map<int, void*>();
 		addressSizes = std::map<void*, int>();
+		memoryAddressTypes = std::map<void*, Type>();
 		m_entityId = entityId;
 		m_entityGlobalUId = entityGlobalUId;
 
 		std::ostringstream ss;
 
 		ss.precision(3);
+		//ss << endl;
 		ss << (char)(entityGlobalUId); // limit to 0..255
 		ss << m_entityId;
-		ss << endl;
+		//ss << endl;
 
-		std::cout << ss.str() << endl;
+
+		std::cout << ss.str();
 	}
 
-	void Add(int s, void *ptr)
+	void Add(int n, Type t, void *ptr)
 	{
 		auto search = addressSizes.find(ptr);
 		if (search == addressSizes.end()) {
-			memoryAddresses[p] = ptr;
-			addressSizes[ptr] = p;
-			p += s;
+			memoryAddresses[n] = ptr;
+			memoryAddressTypes[ptr] = t;
+			addressSizes[ptr] = n;
+
+			Changed(ptr);
 		};
 	}
 
 
-	template<typename T, typename C>
-	void Changed(CNetworkVarBase<T, C> *ptr)
+	void Changed(void *ptr)
 	{
 		auto search = addressSizes.find(ptr);
 		if (search != addressSizes.end()) {
 			std::ostringstream ss;
 
-			ss.precision(3);
 			ss << m_entityId;
 			ss << (char)(search->second);
-			ss << fixed;
-			ss << ptr->m_Value;
 
-			std::cout << ss.str() << endl;
+			Type t = memoryAddressTypes[ptr];
+			if (t == Type::_bool) {
+				ss << *(bool*)ptr;
+			}
+			if (t == Type::_int) {
+				ss << *(int*)ptr;
+			}
+			if (t == Type::_float) {
+				ss.precision(3);
+				ss << fixed;
+				ss << *(float*)ptr;
+			}
+
+			std::cout << ss.str();
 		}
 	}
 
 private:
 	std::map<int, void*> memoryAddresses;
 	std::map<void*, int> addressSizes;
-	int p = 0;
+	std::map<void*, Type> memoryAddressTypes;
+	
 	int m_entityId;
 	int m_entityGlobalUId;
 };
